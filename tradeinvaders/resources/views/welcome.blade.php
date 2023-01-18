@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Trade-Invaders
                 </div>
 
                 <div class="links">
