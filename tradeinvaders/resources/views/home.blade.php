@@ -16,20 +16,20 @@
                 <div class="pr-3"><strong>300</strong>&nbspFollowing</div>
             </div>
             <div class="pt-4 font-weight: bold">Jovenil Medina</div>
-            <div class="div">This is a sample pogi ako description</div>
+            <div class="div">{{ Auth::user()->address }}</div>
             <div class="div">jovenilmedina.com</div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-4">
-            <img src="img/post1.jpg" class="w-100">
+            <img src="/img/post1.jpg" class="w-100">
         </div>
         <div class="col-4">
-            <img src="img/post3.jpg" class="w-100">
+            <img src="/img/post3.jpg" class="w-100">
         </div>
         <div class="col-4">
-            <img src="img/post4.jpg" class="w-100">
+            <img src="/img/post4.jpg" class="w-100">
         </div>
     </div>
 </div>

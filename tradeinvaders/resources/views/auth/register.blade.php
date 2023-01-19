@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">User Name</label>
+                            <label for="address" class="col-md-4 col-form-label text-md-right">Address</label>
 
                             <div class="col-md-6">
                                 <input id="text" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}"  autocomplete="address">
