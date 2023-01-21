@@ -7,17 +7,21 @@
             <div class=""></div>asd
         </div>
         <div class="col-9 p-5">
-            <div class="d-flex align-items-center pb-4">
-                <h1>{{ Auth::user()->username }}</h1>
-            </div> 
+            <div class="d-flex justify-content-between align-items-baseline">
+                <div class="d-flex align-items-center pb-4">
+                    <h1>{{ $user->username }}</h1>
+                </div> 
+
+                <a href="#" class="btn btn-primary"> Add New Post</a>
+            </div>
             <div class="d-flex">
                 <div class="pr-3"><strong>127k</strong>&nbspPost</div>
                 <div class="pr-3"><strong>24k</strong>&nbspFollowers</div>
                 <div class="pr-3"><strong>300</strong>&nbspFollowing</div>
             </div>
             <div class="pt-4 font-weight: bold">Jovenil Medina</div>
-            <div class="div">{{ Auth::user()->address }}</div>
-            <div class="div">jovenilmedina.com</div>
+            <div class="div">{{ $user->profile->title }}</div>
+            <div class="div">jovenilmedina.com1</div>
         </div>
     </div>
 
