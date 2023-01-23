@@ -4,26 +4,31 @@
 <div class="container">
     <div class="row">
         <div class="col-3 p-5">
-            <div class=""></div>asd
+            
+            <img src="{{ $user->profile->profileImage() }}" alt="" class="w-100 rounded-circle">
         </div>
         <div class="col-9 p-5">
             <div class="d-flex justify-content-between align-items-baseline">
                 <div class="d-flex align-items-center pb-4">
                     <h1>{{ $user->username }}</h1>
+
+                  <follow-button user-id="{{ $user->id }}"></follow-button>
                 </div> 
-
-                <a href="/p/create" class="btn btn-primary"> Add New Post</a>
+                @can('update', $user->profile)
+                 <a href="/p/create" class="btn btn-primary"> Add New Post</a>
+                 @endcan
             </div>
-
+            @can('update', $user->profile)
             <a href="/profile/{{$user->id}}/edit">Edit profile</a>
+            @endcan
             <div class="d-flex">
                 <div class="pr-3"><strong>{{ $user->posts->count() }}</strong>&nbspPost</div>
                 <div class="pr-3"><strong>24k</strong>&nbspFollowers</div>
                 <div class="pr-3"><strong>300</strong>&nbspFollowing</div>
             </div>
-            <div class="pt-4 font-weight: bold">Jovenil Medina</div>
-            <div class="div">{{ $user->profile->title }}</div>
-            <div class="div">jovenilmedina.com1</div>
+            <div class="pt-4 font-weight: bold">{{ $user->profile->title }}</div>
+            <div class="div">{{ $user->profile->description }}</div>
+            <div class="div">{{ $user->profile->url }}</div>
         </div>
     </div>
 
