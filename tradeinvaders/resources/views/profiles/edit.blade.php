@@ -23,6 +23,20 @@
 
             </div>
 
+            <div class="form-group row">
+
+                <label for="decription">Description</label>
+                <textarea name="decription" id="" cols="30" rows="5" class="form-control @error('description') is-invalid @enderror" value="{{ old('description')}}" autocomplete="description" autofocus></textarea>
+               
+
+                @error('description')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+
+            </div>
+
             <div class="row">
                 <label for="image">Post Image</label>
                 <input type="file" name="image" id="image" class="form-control-file">

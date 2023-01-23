@@ -15,4 +15,8 @@ class ProfileController extends Controller
         ]);
     }
    
+    public function edit($user)
+    {
+        return view("profiles.edit");
+    }
 }
