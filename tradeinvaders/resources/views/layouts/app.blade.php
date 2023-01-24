@@ -23,7 +23,10 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand d-flex" href="{{ url('/home') }}">
+                
+                {{-- <a class="navbar-brand d-flex" href="{{ url('/profile/{ $user-id }') }}"> --}}
+                <a class="navbar-brand d-flex" href="{{ (auth()->user()) ? auth()->user()->id : '/' }}">
+                    
                     <div class=""><img src="/img/logo.gif" alt="" style="height: 25px; border-right: 1px solid #333;" class="pr-3"></div>
                      <div class="pl-2">TradeInvaders </div>
                 </a>

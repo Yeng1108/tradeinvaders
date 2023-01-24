@@ -13,7 +13,7 @@ protected $guarded = [];
         $imagePath = ($this->image)? $this->image : 'profile/pPDD562J2JE73bhm8BtN0Jeus0qXfVLHwVokYFXF.png';
         return '/storage/' .$imagePath;
     }
-    public function following()
+    public function followers()
     {
         return $this->belongsToMany(User::class);
     }

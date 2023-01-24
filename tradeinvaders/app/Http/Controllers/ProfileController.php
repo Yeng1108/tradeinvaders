@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
-
+use App\Profile;
 class ProfileController extends Controller
 {
     // public function index($user)
@@ -14,7 +14,8 @@ class ProfileController extends Controller
         // return view('home', [
         //     'user' => $user
         // ]);
-        return view("profiles.index", compact('user'));
+        $follows = (auth()->user())? auth()->user()->following->contains($user->id) : false;
+        return view("profiles.index", compact('user', 'follows'));
 
     }
    

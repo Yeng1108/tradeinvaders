@@ -12,19 +12,20 @@
                 <div class="d-flex align-items-center pb-4">
                     <h1>{{ $user->username }}</h1>
 
-                  <follow-button user-id="{{ $user->id }}"></follow-button>
+                  <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
                 </div> 
                 @can('update', $user->profile)
                  <a href="/p/create" class="btn btn-primary"> Add New Post</a>
                  @endcan
             </div>
             @can('update', $user->profile)
-            <a href="/profile/{{$user->id}}/edit">Edit profile</a>
+            
+            <a href="/profile/{{ $user->id }}/edit">Edit profile</a>
             @endcan
             <div class="d-flex">
                 <div class="pr-3"><strong>{{ $user->posts->count() }}</strong>&nbspPost</div>
-                <div class="pr-3"><strong>24k</strong>&nbspFollowers</div>
-                <div class="pr-3"><strong>300</strong>&nbspFollowing</div>
+                <div class="pr-3"><strong>{{ $user->profile->followers->count() }}</strong>&nbspFollowers</div>
+                <div class="pr-3"><strong>{{ $user->following->count() }}</strong>&nbspFollowing</div>
             </div>
             <div class="pt-4 font-weight: bold">{{ $user->profile->title }}</div>
             <div class="div">{{ $user->profile->description }}</div>
