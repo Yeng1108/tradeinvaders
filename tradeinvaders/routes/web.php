@@ -28,3 +28,7 @@ Route::get('/profile/{user}/edit', 'ProfileController@edit')->name('profile.edit
 Route::patch('/profile/{user}', 'ProfileController@update')->name('profile.update');
 
 
+//admin
+Route::get('/admin/{user}', 'AdminController@show')->name('admin.index');
+
+
