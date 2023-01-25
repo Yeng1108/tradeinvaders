@@ -27,6 +27,16 @@ class LoginController extends Controller
      * @var string
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = '/asd';
+    public function redirectPath()
+    {
+        // if (method_exists($this, 'redirectTo')) {
+        //     return $this->redirectTo('/profile/'.auth()->user()->id);
+        // }
+        
+         return property_exists($this, 'redirectTo') ? $this->redirectTo : '/login';
+    }
+
 
     /**
      * Create a new controller instance.
@@ -35,6 +45,8 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        // return property_exists($this, 'redirectTo') ? $this->redirectTo : '/profile'.auth()->user()->id;
         $this->middleware('guest')->except('logout');
+
     }
 }
