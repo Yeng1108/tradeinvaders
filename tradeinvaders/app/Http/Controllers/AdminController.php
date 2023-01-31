@@ -48,6 +48,30 @@ class AdminController extends Controller
 
         $passuser = User::all();
         return view('admin.index',['alluser'=>$passuser],compact('user'));
+        
+        // return redirect("/admin/{$user->id}");
+      
+       
+    }
+
+    public function update() {
+        $data = request()->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'url' => 'url',
+            'image' => ''
+        ]);
+
+        if(request('image')){
+            $imagePath = request('image')->store('profile','public');
+            $imageArray = ['image' => $imagePath];
+        }
+
+       auth()-> user()->update(array_merge(
+        $data,
+        $imageArray ?? []
+       ));
+        return redirect("/profile/{$user->id}");
     }
     
     

@@ -68,6 +68,34 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="department" class="col-md-4 col-form-label text-md-right">Department</label>
+
+                            <div class="col-md-6">
+                                <input id="text" type="text" class="form-control @error('department') is-invalid @enderror" name="department" value="{{ old('department') }}"  autocomplete="department">
+
+                                @error('department')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="acct_type" class="col-md-4 col-form-label text-md-right">Account Type</label>
+
+                            <div class="col-md-6">
+                                <input id="text" type="text" class="form-control @error('acct_type') is-invalid @enderror" name="acct_type" value="{{ old('acct_type') }}"  autocomplete="acct_type">
+
+                                @error('acct_type')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">

@@ -174,16 +174,16 @@
             <div class="div"></div>
             <div class="div"></div>
 
-            <table class="table table-bordered table-responsive table-hover">
-                <thead>
+            <table class="table table-bordered table-responsive table-hover center">
+                <thead class="">
                     <tr>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Department</th>
-                        <th scope="col">Account type</th>
-                        <th scope="col">Created At</th>
-                        <th scope="col">Password</th>
+                        <th >Full Name</th>
+                        <th >Username</th>
+                        <th >Email</th>
+                        <th >Department</th>
+                        <th >Account type</th>
+                        <th >Created At</th>
+                        <th >Password</th>
                     </tr>
                 </thead>
                 <tbody>
