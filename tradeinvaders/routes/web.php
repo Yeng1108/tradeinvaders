@@ -11,9 +11,10 @@
 |
 */
 Route::get('/','MainController@index');
-Route::get('/login', function () {
-    return view('welcome');
-});
+// Route::get('/login', function () {
+//     return view('welcome');
+// });
+
 
 Auth::routes();
 
@@ -30,6 +31,7 @@ Route::patch('/profile/{user}', 'ProfileController@update')->name('profile.updat
 
 
 //admin
+Route::get('/admin', 'AdminController@dashboard')->name('mainadmin.index');
 Route::get('/admin/{user}', 'AdminController@show')->name('admin.index');
 Route::post('/admin/createuser', 'AdminController@store')->name('admin.create');
 

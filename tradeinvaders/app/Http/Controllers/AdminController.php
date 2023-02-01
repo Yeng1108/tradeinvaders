@@ -25,6 +25,13 @@ class AdminController extends Controller
         return view('admin.index',['alluser'=>$data],compact('user'));
     }
 
+    public function dashboard(User $user)
+    {
+        // return view('admin.adminmain');
+        $data = User::all();
+        return view('admin.adminmain',['alluser'=>$data],compact('user'));
+    }
+
     public function store(User $user)
     {
         $data = request()->validate([
