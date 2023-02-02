@@ -15,10 +15,13 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <!-- Styles -->
+    
+      <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
 </head>
 <body>
     <div class="pogi1">
@@ -80,7 +83,7 @@
     <div class="sidebar">
         <div class="logo-details">
           <i class='bx bxl-c-plus-plus icon'></i>
-            <div class="logo_name">CodingLab</div>
+            <div class="logo_name">Trade-Invaders</div>
             <i class='bx bx-menu' id="btn" ></i>
         </div>
         <ul class="nav-list">
@@ -148,22 +151,25 @@
          <li class="profile">
              <div class="profile-details">
                <!--<img src="profile.jpg" alt="profileImg">-->
-               <div class="name_job">
-                 <div class="name">Prem Shahi</div>
-                 <div class="job">Web designer</div>
+               <div class="building">
+                 <div class="name">Toyota North Edsa</div>
+                 <div class="job">& Service Center</div>
+                 <i class='bx bxs-buildings bx-tada bx-flip-horizontal' ></i>
                </div>
              </div>
-             <i class='bx bx-log-out' id="log_out" ></i>
+             <i class='bx bxs-buildings' id="log_out" ></i>
+             <font-awesome-icon icon="fa-solid fa-building" />
+             
+             
          </li>
         </ul>
       </div>
 
       
       <section class="home-section">
-          <div class="text">Dashboard</div>
-          <main class="py-4">
-            @yield('content')
-        </main>
+          {{-- <div class="text">Dashboard</div> --}}
+          @yield('content')
+         
       </section>
       <script>
       let sidebar = document.querySelector(".sidebar");

@@ -14,20 +14,13 @@ class AdminController extends Controller
 
     public function show(User $user)
     {
-        // $user =User::findorfail($user);
 
-        // return view('home', [
-        //     'user' => $user
-        // ]);
-        // $follows = (auth()->user())? auth()->user()->following->contains($user->id) : false;
-        // return view("admin.index", compact('user', 'follows'));
         $data = User::all();
         return view('admin.index',['alluser'=>$data],compact('user'));
     }
 
     public function dashboard(User $user)
     {
-        // return view('admin.adminmain');
         $data = User::all();
         return view('admin.adminmain',['alluser'=>$data],compact('user'));
     }
@@ -52,34 +45,12 @@ class AdminController extends Controller
             'acct_type' => $data['acct_type'],
             'password' => Hash::make($data['password']),
         ]);
-
-        $passuser = User::all();
-        return view('admin.index',['alluser'=>$passuser],compact('user'));
-        
-        // return redirect("/admin/{$user->id}");
-      
-       
+        return redirect('/admin');
     }
 
-    public function update() {
-        $data = request()->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'url' => 'url',
-            'image' => ''
-        ]);
-
-        if(request('image')){
-            $imagePath = request('image')->store('profile','public');
-            $imageArray = ['image' => $imagePath];
-        }
-
-       auth()-> user()->update(array_merge(
-        $data,
-        $imageArray ?? []
-       ));
-        return redirect("/profile/{$user->id}");
+    public function edit($id)
+    {
+        $user = User::find($id);
+        return view('admin.useredit')->with('user', $user);
     }
-    
-    
 }

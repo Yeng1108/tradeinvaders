@@ -34,7 +34,7 @@ class LoginController extends Controller
         //     return $this->redirectTo('/profile/'.auth()->user()->id);
         // }
         
-         return property_exists($this, 'redirectTo') ? $this->redirectTo : '/login';
+        //  return property_exists($this, 'redirectTo') ? $this->redirectTo : '/login';
     }
 
 

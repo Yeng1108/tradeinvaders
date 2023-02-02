@@ -7,16 +7,20 @@ use App\Profile;
 class ProfileController extends Controller
 {
     // public function index($user)
+    public function main(User $user)
+    {
+        
+        $user = auth()->user()->id;
+        return redirect("/profile/{$user}");
+    }
     public function index(User $user)
     {
         // $user =User::findorfail($user);
-
         // return view('home', [
         //     'user' => $user
         // ]);
         $follows = (auth()->user())? auth()->user()->following->contains($user->id) : false;
         return view("profiles.index", compact('user', 'follows'));
-
     }
    
     public function edit(User $user)
