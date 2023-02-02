@@ -53,4 +53,21 @@ class AdminController extends Controller
         $user = User::find($id);
         return view('admin.useredit')->with('user', $user);
     }
+
+    public function update($id)
+    {
+        $user = User::find($id);
+        $data = request()->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'username' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'department' => ['required', 'string', 'max:255'],
+            'acct_type' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+        $user->update($data);
+        return redirect('/admin')->with('Message','Update Success');
+    }
+    
 }

@@ -28,7 +28,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','isAdmin']], function
     Route::get('/{user}', 'AdminController@show')->name('admin.index');
     Route::post('/createuser', 'AdminController@store')->name('admin.create');
 
-    Route::get('/{id}/edit', 'AdminController@edit')->name('admin.index');
+    Route::get('/{id}/edit', 'AdminController@edit')->name('admin.edit');
+    Route::patch('/{id}/update', 'AdminController@update')->name('admin.update');
+
 
 });
 

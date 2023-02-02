@@ -2,7 +2,7 @@
 
 @section('content')
 
-    
+<div class="container">
     <div class="row">
         {{-- <div class="col-3 p-5">
             <img src="{{ $user->profile->profileImage() }}" alt="" class="w-100 rounded-circle">
@@ -18,6 +18,7 @@
                 </div> 
                 @if (Auth::user()->acct_type=='admin') 
                 {{-- <a href="/p/create" class="btn btn-primary"> Add User</a>  --}}
+                
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                     Add User
                   </button>
@@ -37,10 +38,6 @@
                 <div class="pr-3"><strong></strong>&nbspActive</div>
                 <div class="pr-3"><strong></strong>&nbspInactive</div>
             </div>
-            <div class="pt-4 font-weight: bold"></div>
-            <div class="div"></div>
-            <div class="div"></div>
-
             <table id="pogi1" class="table table-bordered table-responsive table-hover center">
                 <thead class="userthead">
                     <tr>
@@ -50,7 +47,6 @@
                         <th >Department</th>
                         <th >Account type</th>
                         <th >Created At</th>
-                        <th >Password</th>
                         <th >action</th>
                     </tr>
                 </thead>
@@ -63,11 +59,10 @@
                         <td>{{ $alluser->department }}</td>
                         <td>{{ $alluser->acct_type }}</td>
                         <td>{{ $alluser->created_at }}</td>
-                        <td>{{ $alluser->password }}</td>
                         <td>
-                            <a href="{{ url('/admin/' .$alluser->id. '/edit') }}"><button id="actionbutton" class="btn btn-info btn-sm"><i class="fa-solid fa-eye"></i> View</button></a>
-                            <a href="{{ url('/admin/' .$alluser->id. '/edit') }}"><button id="actionbutton" class="btn btn-primary btn-sm"><i class="fa-sharp fa-solid fa-pen-to-square"></i> Edit</button></a>
-                            <a href="{{ url('/admin/' .$alluser->id. '/edit') }}"><button id="actionbutton" class="btn btn-danger btn-sm"><i class="fa-solid fa-user-slash"></i> Delete</button></a>
+                            <a href="{{ url('/admin/' .$alluser->id. '/edit') }}"><button id="actionbutton" class="btn btn-info btn-sm"><i class="fa-solid fa-eye"></i></button></a>
+                            <a href="{{ url('/admin/' .$alluser->id. '/edit') }}"><button id="actionbutton" class="btn btn-primary btn-sm"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></a>
+                            <a href="{{ url('/admin/' .$alluser->id. '/edit') }}"><button id="actionbutton" class="btn btn-danger btn-sm"><i class="fa-solid fa-user-slash"></i></button></a>
                             
                         </td>
                         
@@ -99,7 +94,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-        <form method="POST" action="/admin/creaetuser">
+        <form method="POST" action="/admin/createuser">
             <div class="modal-body">
                     @csrf
 
@@ -223,5 +218,5 @@
           </div>
         </div>
       </div>
-
+    </div>
 @endsection

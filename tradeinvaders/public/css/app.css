@@ -54,19 +54,30 @@
 -webkit-box-shadow: 3px 20px 64px 0px rgba(0,0,0,0.68);
 -moz-box-shadow: 3px 20px 64px 0px rgba(0,0,0,0.68);
  background-color: rgba(151, 162, 162, 0.133);
- border: 2px solid grey;
+ max-height: 300px;
+
  
 }
-/* #pogi1 .userthead tr{
- border: 3px solid black;
- 
-} */
-#pogi th td {
-  border: 3px solid black;
-  color: blue;
+
+#pogi1 .userthead tr th{
+ border: 1px solid rgb(46, 46, 46);
+ color: black;
+ font-weight: bold;
+ background-color: #DFD3C3;
+
 }
-.pogi1{
+#pogi1 tbody td{
+  border: 1px solid rgb(46, 46, 46);
+  color: black;
+  font-weight: lighter;
+  background-color: #F8EDE3;
+  font-size: 10px;
+
   
+ }
+
+.pogi1{
+    
     background: #f3f3f3;
     -webkit-box-shadow: 0px 1px 5px 0px rgb(0 0 0 / 60%);
     box-shadow: 0px 1px 5px 0px rgb(0 0 0 / 60%);
@@ -80,8 +91,11 @@
 #actionbutton{
  
   margin: 1px;
+  width: 30px;
+  height: 30px;
   
 }
+
 
 @media (max-width: 650px){
 
