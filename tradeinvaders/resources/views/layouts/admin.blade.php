@@ -169,7 +169,7 @@
       <section class="home-section">
           {{-- <div class="text">Dashboard</div> --}}
           @yield('content')
-         
+              
       </section>
       <script>
       let sidebar = document.querySelector(".sidebar");

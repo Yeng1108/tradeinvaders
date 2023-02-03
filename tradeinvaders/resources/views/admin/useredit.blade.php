@@ -2,9 +2,10 @@
 
 @section('content')
 
-    
-<form method="POST" action="/admin/{{ $user->id }}/update">
-    <div class="modal-body">
+<div class="container">
+    <div class="col-12 p-5">
+    <form method="POST" action="/admin/{{ $user->id }}/update">
+        <div id="userview" class="pb-5">
             @csrf
             @method('PATCH')
             <div class="form-group row">
@@ -118,12 +119,14 @@
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  autocomplete="new-password">
                 </div>
             </div>
-        
+            <div  style="float: right;" >
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <button type="submit" class="btn btn-primary">Add new User</button>
-    </div>
+   
+</div>
+</div>  
 </form>
     
 

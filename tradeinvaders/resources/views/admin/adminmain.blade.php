@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container">
+
     <div class="row">
         {{-- <div class="col-3 p-5">
             <img src="{{ $user->profile->profileImage() }}" alt="" class="w-100 rounded-circle">
@@ -47,6 +47,7 @@
                         <th >Department</th>
                         <th >Account type</th>
                         <th >Created At</th>
+                        <th >Updated At</th>
                         <th >action</th>
                     </tr>
                 </thead>
@@ -59,11 +60,13 @@
                         <td>{{ $alluser->department }}</td>
                         <td>{{ $alluser->acct_type }}</td>
                         <td>{{ $alluser->created_at }}</td>
+                        <td>{{ $alluser->updated_at }}</td>
                         <td>
+                            <div class="d-flex flex-row">
                             <a href="{{ url('/admin/' .$alluser->id. '/edit') }}"><button id="actionbutton" class="btn btn-info btn-sm"><i class="fa-solid fa-eye"></i></button></a>
                             <a href="{{ url('/admin/' .$alluser->id. '/edit') }}"><button id="actionbutton" class="btn btn-primary btn-sm"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></a>
                             <a href="{{ url('/admin/' .$alluser->id. '/edit') }}"><button id="actionbutton" class="btn btn-danger btn-sm"><i class="fa-solid fa-user-slash"></i></button></a>
-                            
+                            </div>
                         </td>
                         
                     </tr>
@@ -218,5 +221,5 @@
           </div>
         </div>
       </div>
-    </div>
+
 @endsection

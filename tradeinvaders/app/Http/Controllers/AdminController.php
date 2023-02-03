@@ -66,7 +66,15 @@ class AdminController extends Controller
             'acct_type' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-        $user->update($data);
+        $user->update([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'username' => $data['username'],
+                'address' => $data['address'],
+                'department' => $data['department'],
+                'acct_type' => $data['acct_type'],
+                'password' => Hash::make($data['password']),
+            ]);
         return redirect('/admin')->with('Message','Update Success');
     }
     
