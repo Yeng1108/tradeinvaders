@@ -28,8 +28,28 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','isAdmin']], function
     Route::get('/{user}', 'AdminController@show')->name('admin.index');
     Route::post('/createuser', 'AdminController@store')->name('admin.create');
 
+    //Updating User
     Route::get('/{id}/edit', 'AdminController@edit')->name('admin.edit');
     Route::patch('/{id}/update', 'AdminController@update')->name('admin.update');
+
+
+    Route::get('/{id}/delete', 'AdminController@delete')->name('admin.delete');
+
+
+});
+
+//appraiser
+Route::group(['prefix' => 'appraiser'], function(){
+    Route::get('/', 'AppraiserController@index')->name('appraiser.index');
+    Route::get('/{user}', 'AdminController@show')->name('admin.index');
+    Route::post('/createuser', 'AdminController@store')->name('admin.create');
+
+    //Updating User
+    Route::get('/{id}/edit', 'AdminController@edit')->name('admin.edit');
+    Route::patch('/{id}/update', 'AdminController@update')->name('admin.update');
+
+
+    Route::get('/{id}/delete', 'AdminController@delete')->name('admin.delete');
 
 
 });

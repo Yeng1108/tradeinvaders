@@ -8,6 +8,8 @@
         <div id="userview" class="pb-5">
             @csrf
             @method('PATCH')
+            <h3>Update User</h3>
+            <hr>
             <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -21,8 +23,9 @@
                     @enderror
                 </div>
             </div>
-
-
+            
+            
+           
             <div class="form-group row">
                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 

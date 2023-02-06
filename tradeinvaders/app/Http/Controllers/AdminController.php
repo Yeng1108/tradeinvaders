@@ -77,5 +77,12 @@ class AdminController extends Controller
             ]);
         return redirect('/admin')->with('Message','Update Success');
     }
+
+    public function delete($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/admin')->with('Message','Deleted');
+    }
     
 }

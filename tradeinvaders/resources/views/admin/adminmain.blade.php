@@ -65,7 +65,7 @@
                             <div class="d-flex flex-row">
                             <a href="{{ url('/admin/' .$alluser->id. '/edit') }}"><button id="actionbutton" class="btn btn-info btn-sm"><i class="fa-solid fa-eye"></i></button></a>
                             <a href="{{ url('/admin/' .$alluser->id. '/edit') }}"><button id="actionbutton" class="btn btn-primary btn-sm"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></a>
-                            <a href="{{ url('/admin/' .$alluser->id. '/edit') }}"><button id="actionbutton" class="btn btn-danger btn-sm"><i class="fa-solid fa-user-slash"></i></button></a>
+                            <a href="{{ url('/admin/' .$alluser->id. '/delete') }}"><button id="actionbutton" class="btn btn-danger btn-sm"><i class="fa-solid fa-user-slash"></i></button></a>
                             </div>
                         </td>
                         
