@@ -16,7 +16,8 @@ class AppraiserController extends Controller
     {
         if (Auth::check()) {
             $user = User::find(Auth::id());
-            return view('appraiser.index', compact('user'));
+            $follows = (auth()->user())? auth()->user()->following->contains($user->id) : false;
+            return view('appraiser.index', compact('user', 'follows'));
         } else {
             $user = User::find(1);
             return view('appraiser.index', compact('user'));
