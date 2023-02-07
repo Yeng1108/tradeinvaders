@@ -75,27 +75,74 @@ background-color: #DFD3C3;
   margin: 5px;
 } */
 
-.card {
-  width: 350px;
-  background-color: #a14343;
+.profcard {
+  width: 28%;
+  background-color: #ffffff;
   border: none;
   cursor: pointer;
   transition: all 0.5s;
 }
 
-#tradeincard {
-  width: 350px;
-  background-color: #988b8b;
+#profdetailscard {
+  width: 65%;
+  background-color: #e6e6e6;
   border: none;
   cursor: pointer;
   transition: all 0.5s;
+}
+#appcard{
+  width: 45%;
+}
+#rowapp{
+  margin-left: 13px;
+}
+
+@media (max-width: 1000px){
+  #rowapp{
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 650px){
+
+  div.loginleftpic{
+      display: none;
+  }
+  #profcard{
+   
+      background-color: red;
+    width: 100%;
+  }
+  #profdetailscard{
+    
+    width: 100%; 
+  }
+  #appcard{
+    width: 45%;
+    margin: 0;
+    border: 0;
+    padding: 0;
+   
+    
+  } 
+}
+
+@media (max-width: 374px){
+ 
+  #appcard{
+    width: 100%;
+    margin: 0;
+    border: 0;
+    padding: 0;
+  }
+
 }
 
 .image img {
   transition: all 0.5s
 }
 
-.card:hover .image img {
+.profcard:hover .image img {
   transform: scale(1.5)
 }
 
@@ -199,19 +246,7 @@ hr .new1 {
 }
 
 
-@media (max-width: 650px){
 
-  div.loginleftpic{
-      display: none;
-  }
-  #profcard{
-   
-      background-color: red;
-    width: 100%;
-  }
- 
-  
-}
 
 .center {
  
