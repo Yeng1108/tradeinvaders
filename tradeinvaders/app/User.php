@@ -60,4 +60,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class); //hasOne nanay
     }
+    public function customer()
+    {
+        return $this->hasOne(Customer::class)->orderBy('created_at','DESC');
+    }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appraiser')
 
 @section('content')
 <div class="container">
@@ -34,7 +34,7 @@
                 <div class="d-flex align-items-center pb-4">
                     <h1>{{ $user->username }}</h1>
 
-                  <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
+                  <follow-button user-id="{{ $user->id }}" follows="{{ $userdetails }}"></follow-button>
                 </div> 
                 @can('update', $user->profile)
                  <a href="/p/create" class="btn btn-primary"> Add New Post</a>

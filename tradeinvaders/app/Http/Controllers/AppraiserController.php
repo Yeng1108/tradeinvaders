@@ -16,11 +16,29 @@ class AppraiserController extends Controller
     {
         if (Auth::check()) {
             $user = User::find(Auth::id());
-            $follows = (auth()->user())? auth()->user()->following->contains($user->id) : false;
-            return view('appraiser.index', compact('user', 'follows'));
+            $userdetails = (auth()->user())? auth()->user()->following->contains($user->id) : false;
+            return view('appraiser.index', compact('user', 'userdetails'));
         } else {
-            $user = User::find(1);
-            return view('appraiser.index', compact('user'));
+            // $user = User::find(1);
+            // return view('appraiser.index', compact('user'));
         }
     }
+    
+    public function show(User $user)
+    {
+        if (Auth::check()) {
+            $user = User::find(Auth::id());
+            $userdetails = (auth()->user())? auth()->user()->following->contains($user->id) : false;
+            return view('appraiser.tradein', compact('user', 'userdetails'));
+        } else {
+            // $user = User::find(1);
+            // return view('appraiser.index', compact('user'));
+        }
+    }
+    public function addcustomer(User $user)
+    {
+        $userdetails = (auth()->user())? auth()->user($user->all) : false;
+        return view('appraiser.addcustomer',compact('user', 'userdetails'));
+    }
+    
 }

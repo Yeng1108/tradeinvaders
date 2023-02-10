@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/user.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -169,7 +170,7 @@
       <section class="home-section">
           {{-- <div class="text">Dashboard</div> --}}
           @yield('content')
-              
+
       </section>
       <script>
       let sidebar = document.querySelector(".sidebar");

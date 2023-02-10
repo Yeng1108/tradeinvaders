@@ -41,16 +41,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','isAdmin']], function
 //appraiser
 Route::group(['prefix' => 'appraiser'], function(){
     Route::get('/', 'AppraiserController@index')->name('appraiser.index');
-    Route::get('/{user}', 'AdminController@show')->name('admin.index');
-    Route::post('/createuser', 'AdminController@store')->name('admin.create');
+    Route::get('/trade-in', 'AppraiserController@show')->name('customer.index');
 
-    //Updating User
-    Route::get('/{id}/edit', 'AdminController@edit')->name('admin.edit');
-    Route::patch('/{id}/update', 'AdminController@update')->name('admin.update');
-
-
-    Route::get('/{id}/delete', 'AdminController@delete')->name('admin.delete');
-
+    //adding of customer
+    Route::get('/addcustomer', 'AppraiserController@addcustomer');
+    Route::post('/createcustomer', 'CustomerController@store');
 
 });
 

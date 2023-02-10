@@ -174,7 +174,7 @@
             <div class="div"></div>
             <div class="div"></div>
 
-            <table class="table table-bordered table-responsive table-hover center">
+            <table class="table" style="vertical-align: middle; text-align: center;">
                 <thead class="">
                     <tr>
                         <th >Full Name</th>
