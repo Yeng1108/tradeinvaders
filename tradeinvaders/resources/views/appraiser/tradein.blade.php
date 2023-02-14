@@ -17,24 +17,25 @@
             <table id="pogi1" class="table table-bordered table-responsive-xl table-hover center">
                 <thead class="userthead">
                     <tr>
+                        <th>AssignVehicle</th>
                         <th>Name</th>
-                        <th>Date</th>
-                        <th>Plate#</th>
-                        <th>Unit</th>
-                        <th>YrModel</th>
+                        <th>Contact</th>
+                        <th>birthday</th>
+                        {{-- <th>Unit</th>
+                        <th>YrModel</th> --}}
                         
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach($alluser as $alluser) --}}
+                    @foreach($allcustomer as $customer) 
                     <tr>
-                        <td>Jovenil Medina</td>
-                        <td>02-29-2023</td>
-                        <td>P3U796</td>
-                        <td>Innova</td>
-                        <td>2019</td>
-                       
+                        <td><a href="{{ url('/appraiser/'.$customer->id.'/assignvehicle') }}"><i class="fa-solid fa-plus"></i> <i class="fa-solid fa-car"></i> </a></td>
+                        <td>{{ $customer->CustomerName }}</td>
+                        <td>{{ $customer->Contact }}</td>
+                        <td>{{ $customer->birthday }}</td>
+                        {{-- <td>{{ $customer->CustomerName }}</td>
+                        <td>{{ $customer->CustomerName }}</td> --}}
                         <td>
                             <div class="d-flex flex-row">
                             <a href="{{ url('/admin//edit') }}"><button id="actionbutton" class="btn btn-info btn-sm"><i class="fa-solid fa-eye"></i></button></a>
@@ -44,7 +45,7 @@
                         </td>
                         
                     </tr>
-                    {{-- @endforeach --}}
+                   @endforeach
                    
                 </tbody>
                 

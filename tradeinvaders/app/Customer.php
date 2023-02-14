@@ -17,4 +17,8 @@ class Customer extends Model
         return $this->belongsTo(User::class);
 
     }
+    public function vehicles()
+    {
+        return $this->hasOne(Vehicles::class)->orderBy('created_at','DESC');
+    }
 }

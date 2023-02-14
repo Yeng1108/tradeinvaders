@@ -42,10 +42,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','isAdmin']], function
 Route::group(['prefix' => 'appraiser'], function(){
     Route::get('/', 'AppraiserController@index')->name('appraiser.index');
     Route::get('/trade-in', 'AppraiserController@show')->name('customer.index');
-
     //adding of customer
     Route::get('/addcustomer', 'AppraiserController@addcustomer');
     Route::post('/createcustomer', 'CustomerController@store');
+    //assigning of vehicles
+    Route::get('/{id}/assignvehicle', 'AppraiserController@assign');
+    Route::post('/{id}/assigned', 'VehicleController@store');
 
 });
 
