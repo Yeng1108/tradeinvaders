@@ -14,7 +14,7 @@
 // use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\SearchController;
 Route::get('/','MainController@index');
 // Route::get('/login', function () {
 //     return view('welcome');
@@ -49,6 +49,14 @@ Route::group(['prefix' => 'appraiser'], function(){
     Route::get('/{id}/assignvehicle', 'AppraiserController@assign');
     Route::post('/{id}/assigned', 'VehicleController@store');
 
+    //searching of customer
+    Route::get('/trade-in', 'SearchController@index')->name('trade-in.index');
+    Route::get('/trade-in/action', 'SearchController@action')->name('trade-in.action');
+
+    
+    // Route::get('/live_search', 'SearchController@index');
+    // Route::get('/live_search/action', 'LiveSearchController@action')->name('live_search.action');
+
 });
 
 
@@ -64,4 +72,8 @@ Route::get('/profile', 'ProfileController@main')->name('profile.main');
 Route::get('/profile/{user}', 'ProfileController@index')->name('profile.index');
 Route::get('/profile/{user}/edit', 'ProfileController@edit')->name('profile.edit');
 Route::patch('/profile/{user}', 'ProfileController@update')->name('profile.update');
+
+
+
+
 

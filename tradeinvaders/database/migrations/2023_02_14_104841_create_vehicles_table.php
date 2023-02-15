@@ -15,7 +15,7 @@ class CreateVehiclesTable extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('vehicle_id');
+            $table->unsignedBigInteger('customer_id');
             $table->string('unit')->nullable();
             $table->string('plateno')->nullable();
             $table->string('brand')->nullable();
@@ -28,7 +28,7 @@ class CreateVehiclesTable extends Migration
             $table->string('carimage');
             $table->timestamps();
 
-            $table->index('vehicle_id');
+            $table->index('customer_id');
         });
     }
 

@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
+use App\Customer;
 use Illuminate\Http\Request;
 
 class VehicleController extends Controller
@@ -38,7 +39,7 @@ class VehicleController extends Controller
 
         // $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200,1200);
         // $image->save();
-        auth()->user()->customer()->vehicles()->create([
+        auth()->user()->customer->vehicles()->create([
             'unit' => $data['unit'],
             'plateno' => $data['plateno'],
             'brand' => $data['brand'],

@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -91,7 +92,31 @@
 </body>
 </html>
 
-
+<script>
+    $(document).ready(function(){
+    fetch_customer_data();
+  
+    function fetch_customer_data(query = '')
+    {
+      $.ajax({
+        url:"{{ route('trade-in.action') }}",
+        method:'GET',
+        data:{query:query},
+        dataType:'json',
+        success:function(data)
+        {
+          $('tbody').html(data.table_data);
+          $('#total_records').text(data.total_data);
+        }
+      });
+    }
+  
+    $(document).on('keyup', '#search', function(){
+      var query = $(this).val();
+      fetch_customer_data(query);
+    });
+  });
+</script>
 
 
 
