@@ -43,9 +43,15 @@ function action(Request $request)
     <td><a href="'.url('/appraiser/'.$row->id.'/assignvehicle').'"><i class="fa-solid fa-plus"></i> <i class="fa-solid fa-car"></i> </a> &nbsp; ('.$row->vehicles()->count().')</td>
     <td>'.$row->CustomerName.'</td>
     <td>'.$row->Contact.'</td>
-     <td>'.$row->birthday.'</td>
-     
-    </tr>
+    <td>'.$row->birthday.'</td>
+    <td>
+    <div class="d-flex flex-row">
+    <a href="'.url('/appraiser/customer/'.$row->id.'/vehicle/view').'"><button id="actionbutton" class="btn btn-info btn-sm"><i class="fa-solid fa-eye"></i></button></a>
+    <a href="'.url('/admin/edit').'"><button id="actionbutton" class="btn btn-primary btn-sm"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></a>
+    <a href="'.url('/admin/delete').'"  onclick="return confirm(\'Are you sure you want to delete this user?\');"><button id="actionbutton" class="btn btn-danger btn-sm"><i class="fa-solid fa-user-slash"></i></button></a>
+    </div>
+    </td>
+   
     ';
    }
   }

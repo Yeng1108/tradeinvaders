@@ -24,6 +24,16 @@
             {{-- </form> --}}
         </div>
     </div> 
+
+    @if (session('success'))
+    <div id="alertbox" class="float-right alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+
     <div class="row justify-content-center">
         <div class="col-12">
             <h3 align="left">Total Data : <span id="total_records"></span></h3>
@@ -40,7 +50,7 @@
                         <th>Action</th>
                     </tr>
                 </thead >
-                <tbody id="users-list">
+                <tbody id="customerlist">
                     {{-- @foreach($allcustomer as $customer) 
                     <tr>
                         <td><a href="{{ url('/appraiser/'.$customer->id.'/assignvehicle') }}"><i class="fa-solid fa-plus"></i> <i class="fa-solid fa-car"></i> </a> &nbsp; ({{ $customer->vehicles()->count() }})</td>
@@ -57,6 +67,7 @@
                         
                     </tr>
                    @endforeach --}}
+                   
                    
                 </tbody>
                 

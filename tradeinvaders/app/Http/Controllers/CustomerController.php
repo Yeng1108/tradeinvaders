@@ -13,7 +13,7 @@ class CustomerController extends Controller
     }
   
 
-    public function store(User $user)
+    public function store(User $user,Request $request)
     {
         
 
@@ -39,7 +39,7 @@ class CustomerController extends Controller
             'city' => $data1['City'],
             'province' => $data1['Province'],
         ]);
-
+        $request->session()->flash('success', 'Customer added successfully!');
         // return response()->json([
         //     'message' => 'Successfully created customer!',
         //     'customer' => $customer
@@ -50,6 +50,7 @@ class CustomerController extends Controller
         //     'email' => 'johndoe@example.com',
         //     'password' => Hash::make('password'),
         // ]);
+
        return redirect('/appraiser/trade-in');
     }
     

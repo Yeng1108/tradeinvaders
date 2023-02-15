@@ -93,29 +93,38 @@
 </html>
 
 <script>
+//json
     $(document).ready(function(){
-    fetch_customer_data();
-  
-    function fetch_customer_data(query = '')
-    {
-      $.ajax({
-        url:"{{ route('trade-in.action') }}",
-        method:'GET',
-        data:{query:query},
-        dataType:'json',
-        success:function(data)
+        fetch_customer_data();
+    
+        function fetch_customer_data(query = '')
         {
-          $('tbody').html(data.table_data);
-          $('#total_records').text(data.total_data);
+        $.ajax({
+            url:"{{ route('trade-in.action') }}",
+            method:'GET',
+            data:{query:query},
+            dataType:'json',
+            success:function(data)
+            {
+            $('#customerlist').html(data.table_data);
+            $('#total_records').text(data.total_data);
+            }
+        });
         }
-      });
-    }
-  
-    $(document).on('keyup', '#search', function(){
-      var query = $(this).val();
-      fetch_customer_data(query);
+    
+        $(document).on('keyup', '#search', function(){
+        var query = $(this).val();
+        fetch_customer_data(query);
+        });
     });
-  });
+
+//alertbox
+    $(document).ready(function(){
+     $('.alert').delay(3000).fadeOut(350);
+    });
+
+
+
 </script>
 
 
