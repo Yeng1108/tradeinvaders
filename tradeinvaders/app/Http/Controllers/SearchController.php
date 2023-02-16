@@ -21,16 +21,38 @@ function action(Request $request)
   $query = $request->get('query');
   if($query != '')
   {
-    $data = Customer::where('CustomerName', 'LIKE', "%$query%")
-                        ->orWhere('Contact', 'LIKE', "%$query%")
-                        ->orWhere('birthday', 'LIKE', "%$query%")
-                        ->get();
-     
+    //for admin future ref
+    // $data = Customer::where('CustomerName', 'LIKE', "%$query%")
+    //                     ->orWhere('Contact', 'LIKE', "%$query%")
+    //                     ->orWhere('birthday', 'LIKE', "%$query%")
+    //                     ->get();
+                        $data = Customer::whereHas('user', function ($query) {
+                          $query->where('id', auth()->id());
+                        })->where(function($q) use ($query) {
+                            $q->where('CustomerName', 'LIKE', "%$query%")
+                                ->orWhere('Contact', 'LIKE', "%$query%")
+                                ->orWhere('birthday', 'LIKE', "%$query%");
+                        })->orderBy('created_at', 'DESC')->get();
+
+                        //for OG dealers future ref
+                        // $data = Customer::whereHas('user', function ($query) {
+                        //   $query->where('id', auth()->id())->orWhere('Dealer', 'TNE');
+                        // })
+                        // ->where(function($q) use ($query) {
+                        //     $q->where('CustomerName', 'LIKE', "%$query%")
+                        //         ->orWhere('Contact', 'LIKE', "%$query%")
+                        //         ->orWhere('birthday', 'LIKE', "%$query%");
+                        // })
+                        // ->orderBy('created_at', 'DESC')
+                        // ->get();
   }
   else
   {
   
-      $data = Customer::orderBy('created_at', 'DESC')->get();
+      // $data = Customer::orderBy('created_at', 'DESC')->get();
+      $data = Customer::whereHas('user', function ($query) {
+        $query->where('id', auth()->id());
+      })->orderBy('created_at', 'DESC')->get();
     //   $data = DB::table('users')->orderBy('id', 'desc')->get();
   }
   $total_row = $data->count();
@@ -40,17 +62,18 @@ function action(Request $request)
    {
     $output .= '
     <tr>
-    <td><a href="'.url('/appraiser/'.$row->id.'/assignvehicle').'"><i class="fa-solid fa-plus"></i> <i class="fa-solid fa-car"></i> </a> &nbsp; ('.$row->vehicles()->count().')</td>
-    <td>'.$row->CustomerName.'</td>
-    <td>'.$row->Contact.'</td>
-    <td>'.$row->birthday.'</td>
-    <td>
-    <div class="d-flex flex-row">
-    <a href="'.url('/appraiser/customer/'.$row->id.'/vehicle/view').'"><button id="actionbutton" class="btn btn-info btn-sm"><i class="fa-solid fa-eye"></i></button></a>
-    <a href="'.url('/admin/edit').'"><button id="actionbutton" class="btn btn-primary btn-sm"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></a>
-    <a href="'.url('/admin/delete').'"  onclick="return confirm(\'Are you sure you want to delete this user?\');"><button id="actionbutton" class="btn btn-danger btn-sm"><i class="fa-solid fa-user-slash"></i></button></a>
-    </div>
-    </td>
+      <td><a href="'.url('/appraiser/'.$row->id.'/assignvehicle').'"><i class="fa-solid fa-plus"></i> <i class="fa-solid fa-car"></i> </a> &nbsp; ('.$row->vehicles()->count().')</td>
+      <td>'.$row->CustomerName.'</td>
+      <td>'.$row->Contact.'</td>
+      <td>'.$row->birthday.'</td>
+      <td>
+        <div class="d-flex flex-row">
+          <a href="'.url('/appraiser/customer/'.$row->id.'/vehicle/view').'"><button id="actionbutton" class="btn btn-info btn-sm"><i class="fa-solid fa-eye"></i></button></a>
+          <a href="'.url('/admin/edit').'"><button id="actionbutton" class="btn btn-primary btn-sm"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></a>
+          <a href="'.url('/admin/delete').'"  onclick="return confirm(\'Are you sure you want to delete this user?\');"><button id="actionbutton" class="btn btn-danger btn-sm"><i class="fa-solid fa-user-slash"></i></button></a>
+        </div>
+      </td>
+    </tr>
    
     ';
    }
@@ -58,9 +81,9 @@ function action(Request $request)
   else
   {
    $output = '
-   <tr>
-    <td align="center" colspan="5">No Data Found</td>
-   </tr>
+    <tr>
+      <td align="center" colspan="5">No Data Found</td>
+    </tr>
    ';
   }
   $data = array(

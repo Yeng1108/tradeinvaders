@@ -53,14 +53,23 @@ class AppraiserController extends Controller
         // return view('appraiser.assignvehicle',compact('user', 'userdetails'));
         return view('appraiser.assignvehicle')->with('customer', $data);
     }
+
     public function viewvehicle($id)
     {
-        
-        $customer = Customer::find($id);
-        $vehicles = $customer->vehicles;
-        
-        // return view('appraiser.assignvehicle',compact('user', 'userdetails'));
-        return view('appraiser.viewvehicle', compact('vehicles', 'customer'));
-    }
+        // // $customer = Customer::findOrFail($id); // Find the customer based on the given ID
+
+    
+        // $vehicles = $customer->vehicles()->orderByDesc('created_at')->get(); // Get the vehicles for the customer and order them by created_at in descending order
+    
+      
+        $customer = Customer::where('id', $id)
+            ->where('user_id', Auth::user()->id)
+            ->firstOrFail(); // Find the customer based on the given ID and authenticated user
+
+        $vehicles = $customer->vehicles()
+            ->orderByDesc('created_at')
+            ->get(); // Retrieve the vehicles related to the customer
+                return view('appraiser.viewvehicle', compact('customer', 'vehicles'));
+            }
    
 }

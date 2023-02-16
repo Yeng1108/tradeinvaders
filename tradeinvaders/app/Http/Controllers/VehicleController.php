@@ -19,7 +19,7 @@ class VehicleController extends Controller
     //     return view('appraiser.assignvehicle')->with('customer', $data);
     // }
 
-    public function store()
+    public function store($id)
     {
         $data = request()->validate([
 
@@ -39,7 +39,20 @@ class VehicleController extends Controller
 
         // $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200,1200);
         // $image->save();
-        auth()->user()->customer->vehicles()->create([
+        // auth()->user()->customer->vehicles()->create([
+        //     'unit' => $data['unit'],
+        //     'plateno' => $data['plateno'],
+        //     'brand' => $data['brand'],
+        //     'variant' => $data['variant'],
+        //     'yearmodel' => $data['yearmodel'],
+        //     'tvalue' => $data['tvalue'],
+        //     'customerprice' => $data['customerprice'],
+        //     'mp' => $data['mp'],
+        //     'grm' => $data['grm'],
+        //     'carimage' => $imagePath
+        // ]);
+        $customer = Customer::findOrFail($id);
+        $vehicle = $customer->vehicles()->create([
             'unit' => $data['unit'],
             'plateno' => $data['plateno'],
             'brand' => $data['brand'],
@@ -49,7 +62,7 @@ class VehicleController extends Controller
             'customerprice' => $data['customerprice'],
             'mp' => $data['mp'],
             'grm' => $data['grm'],
-            'carimage' => $imagePath
+            'carimage' => $imagePath,
         ]);
        
 

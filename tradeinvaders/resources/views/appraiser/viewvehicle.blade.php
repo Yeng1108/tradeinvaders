@@ -4,8 +4,10 @@
 <div class="container">
     <div class="col-12 grid-margin">
         <div id="" class="card">
+          <div class="card-header bg-dark text-white">
+              <h4 class="card-title"><i class="fa fa-users"></i> Customer Data</h4>
+          </div>
           <div class="card-body">
-            <h4 class="card-title">Customer Data</h4>
             <form method="post" action="" enctype="multipart/form-data">
                 @csrf
               <p class="card-description">
@@ -136,181 +138,60 @@
             </form>
           </div>
         </div>
-    </div>
-    <div class="col-12 grid-margin mt-3">
-     
-      <a class="btn btn-success" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        <i class="fa-sharp fa-solid fa-plus"></i> Vehicle
-      </a>
-   
-      <div class="collapse card mt-3" id="collapseExample">
-        <div class="card-body">
-          <h4 class="card-title">Customer Vehicle</h4>
-          <form method="post" action="/appraiser/{{ $customer->id }}/assigned" enctype="multipart/form-data">
-            @csrf
-          <p class="card-description">
-            vehicle info 
-          </p>
-          <hr>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Car Image:</label>
-                <div class="col-sm-5 ml-3">
-                  <input type="file" class="custom-file-input @error('carimage') is-invalid @enderror" name="carimage" id="customFile"> <label class="custom-file-label" for="customFile">Upload Car Image</label>
-                    @error('carimage')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-                
+       
+        <div class="card mt-4">
+          <div class="card-header bg-dark text-white">
+            <h4 class="card-title"><i class="fas fa-car"></i> Customer Vehicle</h4>
+          </div>
+          @foreach ($vehicles as $vehicle)
+          <div id="accordion">
+            <div class="card mb-2 mt-2">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="btn btn-link text-dark" data-toggle="collapse" data-target="#collapseOne{{ $vehicle->id }}" aria-expanded="true" aria-controls="collapseOne">
+                    <h3><i class="fas fa-car-side"></i> {{ $vehicle->unit }}</h3>
+                  </button>
+                </h5>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Unit:</label>
-                <div class="col-sm-9">
-                  <input id="unit" type="text" class="form-control @error('unit') is-invalid @enderror" name="unit" value="{{ old('unit') }}"  autocomplete="unit">
-                    @error('unit')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+              <div id="collapseOne{{ $vehicle->id }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body bg-light p-5" style="animation: fadeIn 0.5s ease-in;">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <img src="/storage/{{ $vehicle->carimage }}" alt="Vehicle Image" class="img-fluid">
+                      
+                    </div>
+                    <div class="col-md-6">
+                      <h4><i class="fas fa-car"></i> {{ $vehicle->brand }}</h4>
+                      <h5>Unit: {{ $vehicle->unit }}</h5>
+                      <h5>Plate No.: {{ $vehicle->plateno }}</h5>
+                      <h5>Variant: {{ $vehicle->variant }}</h5>
+                      <h5>Year Model: {{ $vehicle->yearmodel }}</h5>
+                      <h5>Trade-in Value: {{ $vehicle->tvalue }}</h5>
+                      <h5>Customer Price: {{ $vehicle->customerprice }}</h5>
+                      <h5>Marketing Professional: {{ $vehicle->mp }}</h5>
+                      <h5>Group Sales Manager: {{ $vehicle->grm }}</h5>
+                      {{-- <button class="btn btn-primary float-right mt-2" style="animation: pulse 1.5s infinite;">
+                        <i class="fas fa-spinner fa-spin"></i> Process
+                      </button> --}}
+                      <button class="btn btn-primary float-right mt-2" id="process-btn" style="animation: pulse 1.5s infinite;">
+                        <i class="fas fa-spinner "></i> Process
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Plate Number:</label>
-                <div class="col-sm-9">
-                  <input id="plateno" type="text" class="form-control @error('plateno') is-invalid @enderror" name="plateno" value="{{ old('plateno') }}"  autocomplete="plateno">
-                    @error('plateno')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Brand</label>
-                <div class="col-sm-9">
-                  <input id="brand" type="text" class="form-control @error('brand') is-invalid @enderror" name="brand" value="{{ old('brand') }}"  autocomplete="brand">
-                  @error('brand')
-                      <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
-                  @enderror
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Variant</label>
-                <div class="col-sm-9">
-                  <input id="variant" type="text" class="form-control @error('variant') is-invalid @enderror" name="variant" value="{{ old('variant') }}"  autocomplete="variant">
-                    @error('variant')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Year Model</label>
-                <div class="col-sm-9">
-                  <select class="form-control @error('yearmodel') is-invalid @enderror" id="yearmodel" name="yearmodel" value="{{ old('yearmodel') }}">
-                    <option disabled selected value="">Select Year Model</option>
-                    @for ($year = date('Y'); 1995 <= $year; $year--)
-                    <option value="{{ $year }}">{{ $year }}</option>
-                    @endfor
-                  </select>
-                    @error('yearmodel')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-              </div>
-            </div>
-          </div>
-          <p class="card-description">
-            Trade-In Details
-          </p>
-          <hr>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Trade-in Value</label>
-                <div class="col-sm-9">
-                  <input id="tvalue" type="number" class="form-control @error('tvalue') is-invalid @enderror" name="tvalue" value="{{ old('tvalue') }}"  autocomplete="tvalue">
-                    @error('tvalue')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Customer Price</label>
-                <div class="col-sm-9">
-                  <input id="customerprice" type="number" class="form-control @error('customerprice') is-invalid @enderror" name="customerprice" value="{{ old('customerprice') }}"  autocomplete="customerprice">
-                    @error('customerprice')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">MP</label>
-                <div class="col-sm-9">
-                  <input id="mp" type="text" class="form-control @error('mp') is-invalid @enderror" name="mp" value="{{ old('mp') }}"  autocomplete="mp">
-                    @error('mp')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">GRM</label>
-                <div class="col-sm-9">
-                  <input id="grm" type="text" class="form-control @error('grm') is-invalid @enderror" name="grm" value="{{ old('grm') }}"  autocomplete="grm">
-                    @error('grm')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-              </div>
-            </div>
-          </div>
-        <div  style="float: right;" >
-            <button type="submit" class="btn btn-primary">Submit</button>
+          @endforeach
         </div>
-        </form>
-        </div>
-      </div>
 
-     
+
+      </div>
+      
+
+        
     </div>
+    
 </div>
 
 @endsection

@@ -127,6 +127,18 @@
 
 </script>
 
+<script>
+    //spinner button
+    $(document).ready(function() {
+      $("#process-btn").click(function() {
+        $(this).addClass("processing");
+        setTimeout(function() {
+          $("#process-btn").removeClass("processing");
+        }, 2000);
+      });
+    });
+  </script>
+
 
 
 
