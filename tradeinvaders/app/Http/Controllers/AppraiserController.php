@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\User;
 use App\Customer;
+use App\Vehicles;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -41,6 +42,7 @@ class AppraiserController extends Controller
             // return view('appraiser.index', compact('user'));
         }
     }
+
     public function addcustomer(User $user)
     {
         $userdetails = (auth()->user())? auth()->user($user->all) : false;
@@ -57,10 +59,8 @@ class AppraiserController extends Controller
     public function viewvehicle($id)
     {
         // // $customer = Customer::findOrFail($id); // Find the customer based on the given ID
-
     
         // $vehicles = $customer->vehicles()->orderByDesc('created_at')->get(); // Get the vehicles for the customer and order them by created_at in descending order
-    
       
         $customer = Customer::where('id', $id)
             ->where('user_id', Auth::user()->id)
@@ -70,6 +70,17 @@ class AppraiserController extends Controller
             ->orderByDesc('created_at')
             ->get(); // Retrieve the vehicles related to the customer
                 return view('appraiser.viewvehicle', compact('customer', 'vehicles'));
-            }
+    }
+
+    public function process($id)
+    {
+        
+        $vehicles = Vehicles::findOrFail($id);
+        $vehicle = $vehicles->VehicleStatus()->create([
+            'status' => 'Pending',
+        ]);
+        return redirect('/appraiser/trade-in');
+        
+    }
    
 }

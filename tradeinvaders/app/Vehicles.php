@@ -22,4 +22,8 @@ class Vehicles extends Model
     {
         return $this->belongsTo(Customer::class)->orderBy('created_at','DESC');
     }
+    public function VehicleStatus()
+    {
+        return $this->hasOne(VehicleStatus::class);
+    }
 }

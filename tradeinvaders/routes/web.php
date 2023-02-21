@@ -48,12 +48,17 @@ Route::group(['prefix' => 'appraiser'], function(){
     //assigning of vehicles
     Route::get('/{id}/assignvehicle', 'AppraiserController@assign');
     Route::post('/{id}/assigned', 'VehicleController@store');
+
     //viewing of vehicles
-   
     Route::get('/customer/{id}/vehicle/view', 'AppraiserController@viewvehicle');
     //searching of customer
     Route::get('/trade-in', 'SearchController@index')->name('trade-in.index');
     Route::get('/trade-in/action', 'SearchController@action')->name('trade-in.action');
+    
+    //status of vehicle
+    Route::get('/trade-in/{id}/process', 'AppraiserController@process')->name('trade-in.process');
+
+
 
 
 });

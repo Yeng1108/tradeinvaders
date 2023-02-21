@@ -146,7 +146,7 @@
           @foreach ($vehicles as $vehicle)
           <div id="accordion">
             <div class="card mb-2 mt-2">
-              <div class="card-header" id="headingOne">
+              <div class="card-header bg-light" id="headingOne">
                 <h5 class="mb-0">
                   <button class="btn btn-link text-dark" data-toggle="collapse" data-target="#collapseOne{{ $vehicle->id }}" aria-expanded="true" aria-controls="collapseOne">
                     <h3><i class="fas fa-car-side"></i> {{ $vehicle->unit }}</h3>
@@ -158,24 +158,22 @@
                   <div class="row">
                     <div class="col-md-6">
                       <img src="/storage/{{ $vehicle->carimage }}" alt="Vehicle Image" class="img-fluid">
-                      
                     </div>
                     <div class="col-md-6">
                       <h4><i class="fas fa-car"></i> {{ $vehicle->brand }}</h4>
-                      <h5>Unit: {{ $vehicle->unit }}</h5>
-                      <h5>Plate No.: {{ $vehicle->plateno }}</h5>
-                      <h5>Variant: {{ $vehicle->variant }}</h5>
-                      <h5>Year Model: {{ $vehicle->yearmodel }}</h5>
-                      <h5>Trade-in Value: {{ $vehicle->tvalue }}</h5>
-                      <h5>Customer Price: {{ $vehicle->customerprice }}</h5>
-                      <h5>Marketing Professional: {{ $vehicle->mp }}</h5>
-                      <h5>Group Sales Manager: {{ $vehicle->grm }}</h5>
-                      {{-- <button class="btn btn-primary float-right mt-2" style="animation: pulse 1.5s infinite;">
-                        <i class="fas fa-spinner fa-spin"></i> Process
-                      </button> --}}
-                      <button class="btn btn-primary float-right mt-2" id="process-btn" style="animation: pulse 1.5s infinite;">
+                      <h5 class="mb-2">Unit: {{ $vehicle->unit }}</h5>
+                      <h5 class="mb-2">Plate No.: {{ $vehicle->plateno }}</h5>
+                      <h5 class="mb-2">Variant: {{ $vehicle->variant }}</h5>
+                      <h5 class="mb-2">Year Model: {{ $vehicle->yearmodel }}</h5>
+                      <h5 class="mb-2">Trade-in Value: {{ $vehicle->tvalue }}</h5>
+                      <h5 class="mb-2">Customer Price: {{ $vehicle->customerprice }}</h5>
+                      <h5 class="mb-2">Marketing Professional: {{ $vehicle->mp }}</h5>
+                      <h5 class="mb-2">Group Sales Manager: {{ $vehicle->grm }}</h5>
+                      <a href="{{ url('/appraiser/trade-in/' .$vehicle->id. '/process') }}">
+                        <button class="btn btn-primary float-right mt-2" id="process-btn" style="animation: pulse 1.5s infinite;">
                         <i class="fas fa-spinner "></i> Process
-                      </button>
+                        </button>
+                      </a>
                     </div>
                   </div>
                 </div>

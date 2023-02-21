@@ -93,5 +93,57 @@ function action(Request $request)
 
   echo json_encode($data);
 
+//   $output = '';
+// $query = $request->get('query');
+
+// if ($query != '') {
+//     $data = Customer::whereHas('user', function ($query) {
+//             $query->where('id', auth()->id());
+//         })
+//         ->where(function($q) use ($query) {
+//             $q->where('CustomerName', 'LIKE', "%$query%")
+//                 ->orWhere('Contact', 'LIKE', "%$query%")
+//                 ->orWhere('birthday', 'LIKE', "%$query%");
+//         })
+//         ->orderBy('created_at', 'DESC')
+//         ->paginate(5);
+// } else {
+//     $data = Customer::whereHas('user', function ($query) {
+//             $query->where('id', auth()->id());
+//         })
+//         ->orderBy('created_at', 'DESC')
+//         ->paginate(5);
+// }
+
+// if ($data->count() > 0) {
+//     foreach ($data as $row) {
+//         $output .= '
+//         <tr>
+//             <td><a href="'.url('/appraiser/'.$row->id.'/assignvehicle').'"><i class="fa-solid fa-plus"></i> <i class="fa-solid fa-car"></i> </a> &nbsp; ('.$row->vehicles()->count().')</td>
+//             <td>'.$row->CustomerName.'</td>
+//             <td>'.$row->Contact.'</td>
+//             <td>'.$row->birthday.'</td>
+//             <td>
+//                 <div class="d-flex flex-row">
+//                     <a href="'.url('/appraiser/customer/'.$row->id.'/vehicle/view').'"><button id="actionbutton" class="btn btn-info btn-sm"><i class="fa-solid fa-eye"></i></button></a>
+//                     <a href="'.url('/admin/edit').'"><button id="actionbutton" class="btn btn-primary btn-sm"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></a>
+//                     <a href="'.url('/admin/delete').'"  onclick="return confirm(\'Are you sure you want to delete this user?\');"><button id="actionbutton" class="btn btn-danger btn-sm"><i class="fa-solid fa-user-slash"></i></button></a>
+//                 </div>
+//             </td>
+//         </tr>';
+//     }
+// } else {
+//     $output = '<tr>
+//                 <td align="center" colspan="5">No Data Found</td>
+//             </tr>';
+// }
+
+// $data = array(
+//     'table_data'  => $output,
+//     'total_data'  => $data->total(),
+// );
+
+// return response()->json($data);
+
 }
 }

@@ -42,6 +42,7 @@
 *::after {
   box-sizing: border-box;
 }
+
 .processing {
     pointer-events: none;
     opacity: 0.5;
