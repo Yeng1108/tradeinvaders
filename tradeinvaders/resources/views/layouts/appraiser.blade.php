@@ -62,6 +62,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/appraiser/trade-in/') }}">Trade-In</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/appraiser/trade-in/process/') }}">Process</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -93,7 +96,7 @@
 </html>
 
 <script>
-//json
+    //Vieving of Customer
     $(document).ready(function(){
         fetch_customer_data();
     
@@ -115,6 +118,31 @@
         $(document).on('keyup', '#search', function(){
         var query = $(this).val();
         fetch_customer_data(query);
+        });
+    });
+
+    //Vieving of Trade-in Process
+    $(document).ready(function(){
+        fetch_tradein_process();
+    
+        function fetch_tradein_process(query = '')
+        {
+        $.ajax({
+            url:"{{ route('trade-in.tradeinprocess') }}",
+            method:'GET',
+            data:{query:query},
+            dataType:'json',
+            success:function(data)
+            {
+            $('#tradeinlist').html(data.table_data);
+            $('#total_tradein').text(data.total_data);
+            }
+        });
+        }
+    
+        $(document).on('keyup', '#search_tradein', function(){
+        var query = $(this).val();
+        fetch_tradein_process(query);
         });
     });
 

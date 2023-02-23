@@ -169,12 +169,27 @@
                       <h5 class="mb-2">Customer Price: {{ $vehicle->customerprice }}</h5>
                       <h5 class="mb-2">Marketing Professional: {{ $vehicle->mp }}</h5>
                       <h5 class="mb-2">Group Sales Manager: {{ $vehicle->grm }}</h5>
-                      <a href="{{ url('/appraiser/trade-in/' .$vehicle->id. '/process') }}">
-                        <button class="btn btn-primary float-right mt-2" id="process-btn" style="animation: pulse 1.5s infinite;">
+                      
+                      
+                    @if (isset($vehicle->VehicleStatus) && $vehicle->VehicleStatus->status !== null)
+                   
+                    @else
+                    <p>Vehicle status not available</p>
+                    <a href="{{ url('/appraiser/trade-in/' .$vehicle->id. '/process') }}">
+                      <button class="btn btn-primary float-right mt-2" id="process-btn" style="animation: pulse 1.5s infinite;">
                         <i class="fas fa-spinner "></i> Process
-                        </button>
-                      </a>
+                      </button>
+                    </a>
+                    @endif
                     </div>
+
+                    @if (isset($vehicle->VehicleStatus) && $vehicle->VehicleStatus->status !== null)
+                    <div class="col-md-12 center mt-3">
+                      <h4 class="mb-2" style="color: green; font-weight:600;">The vehicle has already been processed</h4>
+                      <h5 style="color: green; font-weight:600;" >Vehicle status: {{ $vehicle->VehicleStatus->status }}</h5>
+                    </div>
+                    @endif
+                   
                   </div>
                 </div>
               </div>

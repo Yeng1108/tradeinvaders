@@ -69,7 +69,11 @@ class AppraiserController extends Controller
         $vehicles = $customer->vehicles()
             ->orderByDesc('created_at')
             ->get(); // Retrieve the vehicles related to the customer
-                return view('appraiser.viewvehicle', compact('customer', 'vehicles'));
+
+        $vehicleStatus = $vehicles->first() ? $vehicles->first()->VehicleStatus : null;    
+        return view('appraiser.viewvehicle', compact('customer', 'vehicles', 'vehicleStatus'));
+
+                
     }
 
     public function process($id)

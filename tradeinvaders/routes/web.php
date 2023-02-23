@@ -58,6 +58,10 @@ Route::group(['prefix' => 'appraiser'], function(){
     //status of vehicle
     Route::get('/trade-in/{id}/process', 'AppraiserController@process')->name('trade-in.process');
 
+    //viewing of process
+    Route::get('/trade-in/process', 'ProcessController@show')->name('process.show');
+    Route::get('/trade-in/process/tradein', 'SearchController@tradeinprocess')->name('trade-in.tradeinprocess');
+
 
 
 
