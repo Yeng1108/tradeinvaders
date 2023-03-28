@@ -75,15 +75,39 @@ class AppraiserController extends Controller
 
                 
     }
+    public function viewvehicleprocess($id,$v_id)
+    {
+        // // $customer = Customer::findOrFail($id); // Find the customer based on the given ID
+    
+        // $vehicles = $customer->vehicles()->orderByDesc('created_at')->get(); // Get the vehicles for the customer and order them by created_at in descending order
+      
+        $customer = Customer::where('id', $id)
+            ->where('user_id', Auth::user()->id)
+            ->firstOrFail(); // Find the customer based on the given ID and authenticated user
 
-    public function process($id)
+        $vehicles = $customer->vehicles()
+            ->orderByDesc('created_at')
+            ->get(); // Retrieve the vehicles related to the customer
+
+        $vehicleStatus = $vehicles->first() ? $vehicles->first()->VehicleStatus : null;    
+        return view('appraiser.viewvehicle', compact('customer', 'vehicles', 'vehicleStatus'));
+
+                
+    }
+
+    public function process($id,Request $request)
     {
         
         $vehicles = Vehicles::findOrFail($id);
-        $vehicle = $vehicles->VehicleStatus()->create([
-            'status' => 'Pending',
-        ]);
-        return redirect('/appraiser/trade-in');
+        try {
+            $vehicleStatus = $vehicles->VehicleStatus()->create([
+                'status' => 'Pending',
+            ]);
+            $request->session()->flash('success', 'Vehicle is on process for tradein!');
+        } catch (\Exception $e) {
+            $request->session()->flash('error', 'Failed to create vehicle status.');
+        }
+        return redirect('/appraiser/trade-in/process');
         
     }
    

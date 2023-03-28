@@ -2,14 +2,10 @@
 
 @section('content')
 <div class="container">
-    <h3>Customer Data</h3>
+    <h3>Processing of Trade-In</h3>
     <div class="row justify-content-center">
         <div class="col-4 pt-5">
-            <a href="{{ url('/appraiser/addcustomer') }}">
-                <button class="btn btn-info btn-md">
-                  <i class="fa-solid fa-user-plus"></i> Add Record
-                </button>
-              </a>
+            
         </div>
         <div class="col-8 p-5 d-flex align-items-center">
             {{-- <form action="/appraiser/search" method="GET" class="w-100"> --}}
@@ -40,12 +36,12 @@
             <table id="pogi1" class="table table-bordered table-responsive-xl table-hover center">
               <thead class="userthead">
                 <tr>
-                    <th>AssignVehicle</th>
                     <th>Name</th>
                     <th>Contact</th>
                     <th>birthday</th>
                     <th>Plate</th>
                     <th>YrModel</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead >
